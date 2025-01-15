@@ -1,1 +1,89 @@
-<p>login works!</p>
+<mat-card>
+<mat-card-header>
+    <mat-card-title>
+      @if(mode ==='login'){
+          Sing In
+          }
+          @if(mode ==='register'){
+          Sing Up
+          }
+    </mat-card-title>
+  </mat-card-header>
+   
+  
+<div class="login-container">
+    <form (ngSubmit)="onSunmit()" [formGroup]="form" autocomplete="off">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput placeholder="username" type="text"(input)="updateErrorMessages('username')" 
+               formControlName="username">
+           <mat-error>{{errorMessages.username()}}</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput placeholder="password" type="password" (input)="updateErrorMessages('password')" 
+               formControlName="password">
+           <mat-error>{{errorMessages.password()}}</mat-error>
+        </mat-form-field>
+        @if(mode === 'register'){
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput placeholder="confirm password" type="password" (input)="updateErrorMessages('confirm_password')" 
+                   formControlName="confirm_password">
+               <mat-error>{{errorMessages.confirm_password()}}</mat-error>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline">
+                <mat-label>Display Name</mat-label>
+                <input matInput placeholder="username" type="text"(input)="updateErrorMessages('display_name')" 
+                   formControlName="display_name">
+               <mat-error>{{errorMessages.display_name()}}</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="outline">
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" formControlName="date_of_birth">
+               <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker statView = "year"[startAt]="startDate"></mat-datepicker>
+            
+            </mat-form-field>
+<div>
+            <label class="example-margin">Gender:</label>
+      <mat-radio-group formControlName="gender">
+            <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
+            <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
+            <mat-radio-button class="example-margin" value="all">LGTBQ+</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div>
+      <label class="example-margin">Looking for:</label>
+      <mat-radio-group formControlName="gender">
+            <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
+            <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
+            <mat-radio-button class="example-margin" value="all">LGTBQ+</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    }
+
+        <button mat-raised-button [disabled]="form.invalid">
+        @if(mode === 'login'){
+            Login
+        }
+        @if(mode === 'register'){
+            GET START
+        }
+    </button>
+    </form>
+    <div class="login-spacer">or</div>
+
+    @if(mode === 'login'){
+        <div class="toggle"> New to Myapp? <span (click)="toggleMode()">Sign Up</span></div>
+    }
+    @if(mode === 'register'){
+        <div class="toggle"> Already have an account? <span (click)="toggleMode()">Sign In</span></div>
+    }
+       
+</div>
+</mat-card>
