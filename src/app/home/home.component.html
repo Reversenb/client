@@ -1,1 +1,12 @@
-<p>home works!</p>
+@if(!user()){
+   <div class="container">
+    <div class="welcome">
+        <h1>Welcome to TinnerApp💘</h1>
+        <h3 class="comeon">Come on in to view your match</h3>
+        <p class="info">All you need todo is <a href="/login">Sign-in Or Create an Account</a></p>
+    </div>
+   </div>
+}
+@if(user()){
+   <app-member></app-member>
+}
