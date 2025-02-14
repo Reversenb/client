@@ -45,10 +45,12 @@
         </mat-expansion-panel>
 
       </mat-accordion>
-
+<div class="member-list">
     @for (member of paginator().items; track member.id) {
-        <app-member-card [member]="member"></app-member-card>
+        <div class="member-item"><app-member-card [member]="member" ></app-member-card></div>
     }
+</div>
+    
 
     <mat-paginator [length]="paginator().pagination.length" [pageSize]="paginator().pagination.pageSize" [pageSizeOptions]="pageSize" aria-label="Select page" (page)="onPageChange($event)"></mat-paginator>
 </div>
