@@ -8,7 +8,7 @@ import { parseQuery, parseUserPhoto } from '../_helper/helper'
 import { firstValueFrom } from 'rxjs'
 
 
-type dataCategory = 'members' | 'follower' | 'following'
+type dataCategory = 'members' | 'followers' | 'following'
 @Injectable({
   providedIn: 'root'
 })
